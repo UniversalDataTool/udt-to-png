@@ -1,0 +1,18 @@
+{
+  "name": "udt-to-png",
+  "version": "0.0.1",
+  "author": "Severin Ibarluzea",
+  "main": "cli.js",
+  "license": "MIT",
+  "bin": {
+    "udt-to-png": "./bin/udt-to-png"
+  },
+  "dependencies": {
+    "cli-progress": "^3.8.2",
+    "convert-svg-to-png": "^0.5.0",
+    "mkdirp": "^1.0.4",
+    "probe-image-size": "^5.0.0",
+    "udt-to-svg": "^0.0.4",
+    "yargs": "^15.4.1"
+  }
+}

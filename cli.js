@@ -35,20 +35,16 @@ async function main() {
       bar1.update(sampleIndex)
     }
 
-    try {
-      const { pngBuffer, fileName } = sampleToPNG(sample)
+    const { pngBuffer, fileName } = await sampleToPNG(sample)
 
-      fs.writeFileSync(
-        `${outputDir}/${
-          useSampleNumber
-            ? `sample${sampleIndex.toString().padStart(6, "0")}.mask.png`
-            : fileName
-        }`,
-        pngBuffer
-      )
-    } catch (e) {
-      console.log(`error processing samples[${sampleIndex}]`, e.toString())
-    }
+    fs.writeFileSync(
+      `${outputDir}/${
+        useSampleNumber
+          ? `sample${sampleIndex.toString().padStart(6, "0")}.mask.png`
+          : fileName
+      }`,
+      pngBuffer
+    )
   }
   bar1.stop()
   process.exit(0)

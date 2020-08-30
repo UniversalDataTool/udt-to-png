@@ -9,3 +9,16 @@
 > possible if there's a way to convert an SVG to a PNG in-browser. PRs welcome!
 
 Converts UDT image files into PNGs, suitable for use in machine learning tasks.
+
+## Usage
+
+```
+Usage: udt-to-png path/to/dataset.udt.json -o output-masks-dir
+
+Options:
+  --help               Show help                                       [boolean]
+  --version            Show version number                             [boolean]
+  --use-sample-number  Use the number of the sample as the mask filename
+                       (sample0001.mask.png, etc.)
+  --output-dir, -o     Output directory for masks                     [required]
+```

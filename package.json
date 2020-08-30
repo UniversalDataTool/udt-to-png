@@ -1,6 +1,6 @@
 {
   "name": "udt-to-png",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Severin Ibarluzea",
   "main": "cli.js",
   "license": "MIT",

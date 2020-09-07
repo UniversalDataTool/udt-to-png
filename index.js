@@ -13,6 +13,10 @@ async function sampleToPNG(sample, options = {}) {
   })
 
   let pngBuffer
+
+  // We can't just use one solution for this because chromium doesn't work in
+  // serverless environments, and svg2img doesn't handle crispEdges
+  // https://github.com/fuzhenn/node-svg2img/issues/39
   if (options.crisp) {
     pngBuffer = await chromiumSVGToPNG(svgText)
   } else {

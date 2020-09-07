@@ -10,6 +10,9 @@ const { argv } = yargs
     describe:
       "Use the number of the sample as the mask filename (sample0001.mask.png, etc.) ",
   })
+  .option("crisp", {
+    describe: "Remove anti-aliasing around shapes (uses headless chromium)",
+  })
   .option("output-dir", {
     alias: "o",
     describe: "Output directory for masks",
@@ -19,6 +22,7 @@ const { argv } = yargs
 const {
   _: [pathToFile],
   outputDir,
+  crisp,
   useSampleNumber,
 } = argv
 
@@ -35,7 +39,7 @@ async function main() {
       bar1.update(sampleIndex)
     }
 
-    const { pngBuffer, fileName } = await sampleToPNG(sample)
+    const { pngBuffer, fileName } = await sampleToPNG(sample, { crisp })
 
     fs.writeFileSync(
       `${outputDir}/${

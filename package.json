@@ -1,6 +1,6 @@
 {
   "name": "udt-to-png",
-  "version": "0.0.2",
+  "version": "0.0.7",
   "author": "Severin Ibarluzea",
   "main": "cli.js",
   "license": "MIT",
@@ -12,6 +12,7 @@
     "convert-svg-to-png": "^0.5.0",
     "mkdirp": "^1.0.4",
     "probe-image-size": "^5.0.0",
+    "svg2img": "^0.8.1",
     "udt-to-svg": "^0.0.4",
     "yargs": "^15.4.1"
   }

@@ -19,8 +19,6 @@ async function sampleToPNG(sample, options = {}) {
     .map(([r, g, b, a]) => [r, g, b, a * 255])
     .concat([[0, 0, 0, 0]])
 
-  console.log({ classificationColors })
-
   const pngBuffer = await svgToPng(svgText, {
     options: "pngbuffer",
     allowedColors: classificationColors,

@@ -9,10 +9,10 @@
   },
   "dependencies": {
     "cli-progress": "^3.8.2",
-    "convert-svg-to-png": "^0.5.0",
+    "color-rgba": "^2.1.1",
     "mkdirp": "^1.0.4",
     "probe-image-size": "^5.0.0",
-    "svg2img": "^0.8.1",
+    "svg-mask-render": "^1.0.0",
     "udt-to-svg": "^0.0.4",
     "yargs": "^15.4.1"
   }

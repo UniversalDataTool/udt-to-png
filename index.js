@@ -1,8 +1,8 @@
 const udtToSVG = require("udt-to-svg")
-const { convert: chromiumSVGToPNG } = require("convert-svg-to-png")
-const svg2img = require("svg2img")
+const svgToPng = require("svg-mask-render")
 const probe = require("probe-image-size")
 const fs = require("fs")
+const rgba = require("color-rgba")
 
 async function sampleToPNG(sample, options = {}) {
   const { width, height } = await probe(sample.imageUrl)
@@ -12,21 +12,19 @@ async function sampleToPNG(sample, options = {}) {
     showImage: false,
   })
 
-  let pngBuffer
+  const classificationColors = Array.from(
+    new Set((sample.annotation || []).map((r) => r.color))
+  )
+    .map((c) => rgba(c))
+    .map(([r, g, b, a]) => [r, g, b, a * 255])
+    .concat([[0, 0, 0, 0]])
 
-  // We can't just use one solution for this because chromium doesn't work in
-  // serverless environments, and svg2img doesn't handle crispEdges
-  // https://github.com/fuzhenn/node-svg2img/issues/39
-  if (options.crisp) {
-    pngBuffer = await chromiumSVGToPNG(svgText)
-  } else {
-    pngBuffer = await new Promise((resolve, reject) => {
-      svg2img(svgText, (err, buffer) => {
-        if (err) return reject(err)
-        resolve(buffer)
-      })
-    })
-  }
+  console.log({ classificationColors })
+
+  const pngBuffer = await svgToPng(svgText, {
+    options: "pngbuffer",
+    allowedColors: classificationColors,
+  })
 
   return {
     pngBuffer,

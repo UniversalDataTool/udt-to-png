@@ -10,6 +10,10 @@
 
 Converts UDT image files into PNGs, suitable for use in machine learning tasks.
 
+## Installation
+
+`npm install -g udt-to-png`
+
 ## Usage
 
 ```
